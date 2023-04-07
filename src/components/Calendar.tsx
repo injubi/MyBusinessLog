@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 const Conatiner = styled.div`
@@ -5,6 +6,8 @@ const Conatiner = styled.div`
 `;
 
 const Calendar = () => {
+  const [today, setToday] = useState<Date>(new Date());
+
   return <Conatiner></Conatiner>;
 };
 
