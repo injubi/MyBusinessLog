@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-  width: 150px;
+  /* width: 120px; */
+  height: 150px;
+  /* border: 1px solid black; */
+  background-color: white;
+  padding: 10px;
 `;
 
 type DayProps = {
@@ -9,5 +13,7 @@ type DayProps = {
 };
 
 const Day = ({ day }: DayProps) => {
-  return <Container>{day}</Container>;
+  return <Container>{day !== 0 && day}</Container>;
 };
+
+export default Day;
