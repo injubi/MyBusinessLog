@@ -1,19 +1,19 @@
 import styled from "styled-components";
 
-const Container = styled.div`
-  /* width: 120px; */
+export const DayContainer = styled.div<{ isToday: boolean }>`
   height: 150px;
-  /* border: 1px solid black; */
   background-color: white;
   padding: 10px;
+  font-weight: ${(props) => props.isToday && 600};
 `;
 
-type DayProps = {
+export type DayProps = {
   day: number;
+  isToday: boolean;
 };
 
-const Day = ({ day }: DayProps) => {
-  return <Container>{day !== 0 && day}</Container>;
+const Day = ({ day, isToday }: DayProps) => {
+  return <DayContainer isToday={isToday}>{day}</DayContainer>;
 };
 
 export default Day;
