@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Day, { DayContainer, DayProps } from "./Day";
 import Header from "./Header";
+import useUser from "../store/modules/dayHooks";
+import useDay from "../store/modules/dayHooks";
 const Conatiner = styled.div`
   width: 50vw;
   background-color: lightgray;
@@ -14,32 +16,12 @@ const Days = styled.div`
 `;
 
 const Calendar = () => {
-  const [targetDay, setTargetDay] = useState<Date>(new Date());
-  const [today, setToday] = useState<Date>(new Date());
   const [prevBlank, setPrevBlank] = useState<number>();
   const [nextBlank, setNextBlank] = useState<number>();
 
   const [days, setDays] = useState<DayProps[]>([]);
 
-  const handleMonth = (option: string) => {
-    let nowMonth = targetDay.getMonth();
-    let newDate = new Date();
-    if (option === "prev") {
-      newDate = new Date(
-        targetDay.getFullYear(),
-        nowMonth - 1,
-        newDate.getDate()
-      );
-    } else {
-      newDate = new Date(
-        targetDay.getFullYear(),
-        nowMonth + 1,
-        newDate.getDate()
-      );
-    }
-    console.log(newDate);
-    setTargetDay(newDate);
-  };
+  const { today, targetDay, handleTargetDay } = useDay();
 
   useEffect(() => {
     let firstDay = new Date(targetDay.getFullYear(), targetDay.getMonth(), 1);
@@ -48,8 +30,6 @@ const Calendar = () => {
       targetDay.getMonth() + 1,
       0
     );
-    console.log(firstDay.getDay());
-    console.log(lastDay.getDate());
     let tempPrev = 0;
     let tempDays = [];
     let tempNext = 0;
@@ -79,7 +59,7 @@ const Calendar = () => {
 
   return (
     <Conatiner>
-      <Header handleMonth={handleMonth} month={targetDay.getMonth() + 1} />
+      <Header />
       <Days>
         {/* {preBlank.maps} */}
         {Array(prevBlank)

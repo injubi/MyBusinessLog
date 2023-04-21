@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import useDay from "../store/modules/dayHooks";
 
 const Container = styled.div`
   width: 100%;
@@ -27,12 +28,9 @@ const DayContainer = styled.div`
   border-bottom: 1px solid lightgray;
   /* padding: 10px 0; */
 `;
-type HeaderProps = {
-  handleMonth: Function;
-  month: number;
-};
-const Header = ({ handleMonth, month }: HeaderProps) => {
-  // const month = new Date().getMonth() + 1;
+
+const Header = () => {
+  const { targetDay, handleTargetDay } = useDay();
   const days = ["일", "월", "화", "수", "목", "금", "토"];
   const preMonth = () => {};
   const nextMonth = () => {};
@@ -41,15 +39,15 @@ const Header = ({ handleMonth, month }: HeaderProps) => {
       <MonthContainer>
         <MonthButton
           onClick={() => {
-            handleMonth("prev");
+            handleTargetDay("prev");
           }}
         >
           {"<"}
         </MonthButton>
-        <div>{month}월</div>
+        <div>{targetDay.getMonth() + 1}월</div>
         <MonthButton
           onClick={() => {
-            handleMonth("next");
+            handleTargetDay("next");
           }}
         >
           {">"}

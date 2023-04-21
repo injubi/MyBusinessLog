@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from ".";
 import { targetDayAction } from "./day";
 
-const useUser = () => {
-  const { targetDay } = useSelector((state: RootState) => state.day);
+const useDay = () => {
+  const { today, targetDay } = useSelector((state: RootState) => state.day);
   const dispatch = useDispatch();
 
   const handleTargetDay = useCallback((option: string) => {
@@ -23,8 +23,9 @@ const useUser = () => {
         newDate.getDate()
       );
     }
+    console.log(newDate);
     dispatch(targetDayAction({ targetDay: newDate }));
   }, []);
-  return { targetDay, handleTargetDay };
+  return { today, targetDay, handleTargetDay };
 };
-export default useUser;
+export default useDay;
