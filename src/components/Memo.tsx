@@ -1,11 +1,16 @@
 import styled from "styled-components";
+import NowDate from "./NowDate";
 
 const Container = styled.div`
-  width: 50vw;
+    width: 50vw;
 `;
 
 const Memo = () => {
-  return <Container></Container>;
+    return (
+        <Container>
+            <NowDate />
+        </Container>
+    );
 };
 
 export default Memo;
