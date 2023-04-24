@@ -5,7 +5,7 @@ export type LogState = {
 };
 
 export type DataType = {
-    contents: string;
+    content: string;
     date: Date;
 };
 // export type insertLogPayLoad = {
@@ -23,7 +23,7 @@ const logSlice = createSlice({
             state.data = [
                 ...state.data,
                 {
-                    contents: action.payload.contents,
+                    content: action.payload.content,
                     date: action.payload.date,
                 },
             ];
