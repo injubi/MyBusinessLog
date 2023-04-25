@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Day, { DayContainer, DayProps } from "./Day";
 import Header from "./Header";
-import useUser from "../store/modules/dayHooks";
-import useDay from "../store/modules/dayHooks";
+import useDay from "../store/modules/day/dayHooks";
 const Conatiner = styled.div`
   width: 50vw;
   background-color: lightgray;
