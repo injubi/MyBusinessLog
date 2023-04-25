@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import day from "./day";
-import log from "./log";
+import day from "./day/day";
+import log from "./log/log";
 
 const rootReducer = combineReducers({ day, log });
 
