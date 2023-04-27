@@ -26,7 +26,6 @@ const useDay = () => {
           );
         }
       } else {
-        // newDate = new Date(targetDay.getFullYear(), nowMonth + 1);
         if (targetDay.getMonth() === 11) {
           newDate = new Date(targetDay.getFullYear() + 1, 0, 1);
         } else {
@@ -48,6 +47,16 @@ const useDay = () => {
     },
     [targetDay]
   );
-  return { today, targetDay, handleTargetDay, clickDay };
+
+  const checkSameDate = useCallback((date1: Date, date2: Date) => {
+    if (
+      date1.getFullYear() === date2.getFullYear() &&
+      date1.getMonth() === date2.getMonth() &&
+      date1.getDate() === date2.getDate()
+    )
+      return true;
+    else return false;
+  }, []);
+  return { today, targetDay, handleTargetDay, clickDay, checkSameDate };
 };
 export default useDay;

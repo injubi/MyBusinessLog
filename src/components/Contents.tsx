@@ -18,11 +18,14 @@ const Item = styled.div`
 
 const Contents = () => {
   const { data } = useLog();
-  const { targetDay } = useDay();
+  const { targetDay, checkSameDate } = useDay();
 
   return (
     <Container>
-      {data.map((d) => targetDay === d.date && <Item>{d.content}</Item>)}
+      {data.map(
+        (d, idx) =>
+          checkSameDate(targetDay, d.date) && <Item key={idx}>{d.content}</Item>
+      )}
     </Container>
   );
 };
