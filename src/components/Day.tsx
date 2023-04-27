@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import useDay from "../store/modules/day/dayHooks";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const DayContainer = styled.div<{ isToday: boolean }>`
   height: 100px;
@@ -19,11 +19,16 @@ export type DayProps = {
   dateObject: Date;
 };
 
-const Day = ({ day, isToday }: DayProps) => {
-  const { targetDay, handleTargetDay } = useDay();
-
+const Day = ({ day, isToday, dateObject }: DayProps) => {
+  const { targetDay, clickDay } = useDay();
+  //   const {data}
+  const [hasContents, setHasContents] = useState<boolean>(false);
   useEffect(() => {}, []);
-  return <DayContainer isToday={isToday}>{day}</DayContainer>;
+  return (
+    <DayContainer isToday={isToday} onClick={() => clickDay(dateObject)}>
+      {day}
+    </DayContainer>
+  );
 };
 
 export default Day;

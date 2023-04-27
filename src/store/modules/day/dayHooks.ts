@@ -41,6 +41,13 @@ const useDay = () => {
     },
     [targetDay]
   );
-  return { today, targetDay, handleTargetDay };
+
+  const clickDay = useCallback(
+    (date: Date) => {
+      dispatch(targetDayAction({ targetDay: date }));
+    },
+    [targetDay]
+  );
+  return { today, targetDay, handleTargetDay, clickDay };
 };
 export default useDay;
