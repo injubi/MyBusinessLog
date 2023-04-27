@@ -5,13 +5,16 @@ import Header from "./Header";
 import useDay from "../store/modules/day/dayHooks";
 const Conatiner = styled.div`
   width: 50vw;
-  background-color: lightgray;
+  background-color: #a4d6db;
+  /* padding: 5px 0; */
 `;
 
 const Days = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-gap: 1px;
+  grid-gap: 5px;
+  padding: 5px;
+  border-radius: 20px;
 `;
 
 const Calendar = () => {
@@ -45,6 +48,7 @@ const Calendar = () => {
           i === today.getDate() && targetDay.getMonth() === today.getMonth()
             ? true
             : false,
+        dateObject: new Date(targetDay.getFullYear(), targetDay.getMonth(), i),
       });
     }
 
@@ -67,7 +71,14 @@ const Calendar = () => {
             <DayContainer key={i} isToday={false} />
           ))}
         {days.map((d) => (
-          <Day key={d.day} day={d.day} isToday={d.isToday} />
+          <Day
+            key={d.day}
+            day={d.day}
+            isToday={d.isToday}
+            dateObject={
+              new Date(targetDay.getFullYear(), targetDay.getMonth(), d.day)
+            }
+          />
         ))}
         {Array(nextBlank)
           .fill(null)
