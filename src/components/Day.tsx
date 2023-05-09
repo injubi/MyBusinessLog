@@ -35,7 +35,6 @@ const Day = ({ day, isToday, dateObject }: DayProps) => {
     data.forEach((d) => {
       if (checkSameDate(d.date, dateObject)) {
         setHasContents(true);
-      } else {
       }
     });
   }, [day, dateObject, checkSameDate, data]);
