@@ -27,16 +27,18 @@ export type DayProps = {
 };
 
 const Day = ({ day, isToday, dateObject }: DayProps) => {
-  const { targetDay, clickDay, checkSameDate } = useDay();
+  const { clickDay, checkSameDate } = useDay();
   const { data } = useLog();
   const [hasContents, setHasContents] = useState<boolean>(false);
   useEffect(() => {
+    setHasContents(false);
     data.forEach((d) => {
       if (checkSameDate(d.date, dateObject)) {
         setHasContents(true);
+      } else {
       }
     });
-  }, [data]);
+  }, [day, dateObject, checkSameDate, data]);
   return (
     <DayContainer isToday={isToday} onClick={() => clickDay(dateObject)}>
       <div>{day}</div>
