@@ -27,7 +27,6 @@ const DayContainer = styled.div`
   justify-content: space-around;
   background-color: white;
   border-bottom: 1px solid lightgray;
-  /* padding: 10px 0; */
 `;
 
 const Day = styled.div<{ day: String }>`
@@ -38,8 +37,7 @@ const Day = styled.div<{ day: String }>`
 const Header = () => {
   const { targetDay, handleTargetDay } = useDay();
   const days = ["일", "월", "화", "수", "목", "금", "토"];
-  const preMonth = () => {};
-  const nextMonth = () => {};
+
   return (
     <Container>
       <MonthContainer>

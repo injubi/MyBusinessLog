@@ -33,7 +33,6 @@ const Day = ({ day, isToday, dateObject }: DayProps) => {
   useEffect(() => {
     data.forEach((d) => {
       if (checkSameDate(d.date, dateObject)) {
-        console.log("here");
         setHasContents(true);
       }
     });

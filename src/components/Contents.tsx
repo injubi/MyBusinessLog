@@ -10,10 +10,11 @@ const Container = styled.div`
 `;
 
 const Item = styled.div`
-  width: 100%;
+  width: 80%;
   display: flex;
   justify-content: center;
-  padding-top: 20px;
+  padding: 20px 0 10px;
+  border-bottom: 1px solid lightgray;
 `;
 
 const Contents = () => {

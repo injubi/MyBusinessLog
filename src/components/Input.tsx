@@ -11,17 +11,17 @@ const Container = styled.div`
 `;
 const TextArea = styled.textarea`
   width: 70%;
-  height: 30px;
+  height: 40px;
   border: 1px solid lightgray;
-  border-radius: 10px;
+  border-radius: 5px;
 `;
 
 const Button = styled.button`
   border: 0;
   background-color: #a4d6db;
   color: black;
-  width: 100px;
-  margin: 0 10px;
+  width: 80px;
+  margin: 0 8px;
   border-radius: 20px;
   cursor: pointer;
 `;
@@ -31,7 +31,6 @@ const Input = () => {
   const { insertLog } = useLog();
 
   const handleClickBtn = () => {
-    console.log(content);
     if (content) {
       insertLog({ content: content, date: targetDay });
       setContent("");
